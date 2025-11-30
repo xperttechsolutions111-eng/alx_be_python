@@ -3,8 +3,9 @@ class BankAccount:
         self.balance = float(balance)
 
     def deposit(self, amount):
-        self.balance += float(amount)
-        print(f"Deposited: ${float(amount):.1f}")
+        amount = float(amount)
+        self.balance += amount
+        print(f"Deposited: ${amount:.1f}")  # ONLY ONE print
 
     def withdraw(self, amount):
         amount = float(amount)
