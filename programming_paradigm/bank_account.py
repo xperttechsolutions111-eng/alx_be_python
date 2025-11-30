@@ -1,26 +1,21 @@
-# programming_paradigm/bank_account.py
+class BankAccount:
+    def __init__(self, account_name, balance=0):
+        self.account_name = account_name
+        self.balance = balance
 
-def safe_divide(numerator, denominator):
-    """
-    Safely divide numerator by denominator.
+    def deposit(self, amount):
+        if amount <= 0:
+            return "Deposit amount must be positive"
+        self.balance += amount
+        return f"Deposited {amount}. New balance: {self.balance}"
 
-    Returns:
-    - "Error: Please enter numeric values only." for non-numeric inputs
-    - "Error: Cannot divide by zero." for denominator == 0
-    - "The result of the division is X" for successful division
-    """
-    # Validate numeric conversion
-    try:
-        num = float(numerator)
-        den = float(denominator)
-    except (ValueError, TypeError):
-        return "Error: Please enter numeric values only."
+    def withdraw(self, amount):
+        if amount > self.balance:
+            return "Error: Insufficient funds"
+        if amount <= 0:
+            return "Withdrawal amount must be positive"
+        self.balance -= amount
+        return f"Withdrew {amount}. New balance: {self.balance}"
 
-    # Division, with explicit handling of division by zero
-    try:
-        result = num / den
-    except ZeroDivisionError:
-        return "Error: Cannot divide by zero."
-
-    # Return formatted result (keeps float representation)
-    return f"The result of the division is {result}"
+    def display_balance(self):
+        return f"{self.account_name} balance: {self.balance}"
