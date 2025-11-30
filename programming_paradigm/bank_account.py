@@ -7,15 +7,19 @@ class BankAccount:
     def deposit(self, amount):
         amount = float(amount)
         self.balance += amount
-        print(f"Deposited: ${amount:.1f}")  # ONE decimal place
+        # Deposit message: ONE decimal place
+        print(f"Deposited: ${amount:.1f}")
 
     def withdraw(self, amount):
         amount = float(amount)
         if amount > self.balance:
-            print("Insufficient funds.")  # Ends with period, only once
+            # Insufficient funds: print exactly once, ends with period
+            print("Insufficient funds.")
         else:
             self.balance -= amount
-            print(f"Withdrew: ${amount:.1f}")  # ONE decimal place
+            # Withdraw message: ONE decimal place
+            print(f"Withdrew: ${amount:.1f}")
 
     def display_balance(self):
-        print(f"Current Balance: ${self.balance:.1f}")  # ONE decimal place
+        # Display balance: TWO decimal places
+        print(f"Current Balance: ${self.balance:.2f}")
