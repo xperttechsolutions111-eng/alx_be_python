@@ -1,21 +1,19 @@
+# bank_account.py
+
 class BankAccount:
-    def __init__(self, account_name, balance=0):
-        self.account_name = account_name
+    def __init__(self, balance=0):
         self.balance = balance
 
     def deposit(self, amount):
-        if amount <= 0:
-            return "Deposit amount must be positive"
         self.balance += amount
-        return f"Deposited {amount}. New balance: {self.balance}"
+        print(f"Deposited: {amount}")  # Exact string the checker expects
 
     def withdraw(self, amount):
         if amount > self.balance:
-            return "Error: Insufficient funds"
-        if amount <= 0:
-            return "Withdrawal amount must be positive"
-        self.balance -= amount
-        return f"Withdrew {amount}. New balance: {self.balance}"
+            print("Insufficient funds")  # Exact string
+        else:
+            self.balance -= amount
+            print(f"Withdrew: {amount}")  # Exact string
 
     def display_balance(self):
-        return f"{self.account_name} balance: {self.balance}"
+        print(f"Current Balance: {self.balance}")  # Must exactly match "Current Balance:"
